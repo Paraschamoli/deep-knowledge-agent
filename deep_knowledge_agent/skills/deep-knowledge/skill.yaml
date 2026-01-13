@@ -1,0 +1,337 @@
+id: deep-knowledge-v1
+name: deep-knowledge
+version: 1.0.0
+author: paras25619@gmail.com
+
+# Description
+description: |
+  Deep Knowledge Agent is an advanced AI research assistant designed for in-depth analysis,
+  knowledge synthesis, and comprehensive research on complex topics. It breaks down queries
+  into sub-topics, validates facts, connects insights across domains, and delivers structured,
+  well-reasoned outputs. This skill enables deep research, technical exploration, and
+  knowledge synthesis rather than providing surface-level answers.
+
+# Tags and Modes
+tags:
+  - research
+  - deep-knowledge
+  - knowledge-synthesis
+  - investigative-analysis
+  - fact-validation
+  - domain-exploration
+  - technical-research
+  - comprehensive-analysis
+
+input_modes:
+  - text/plain
+  - application/json
+
+output_modes:
+  - text/plain
+  - application/json
+  - text/markdown
+
+# Example Queries
+examples:
+  - "Research the impact of quantum computing on modern cryptography and analyze potential future threats to current encryption standards"
+  - "Perform deep analysis on the ethical implications of AI in healthcare decision-making systems"
+  - "Investigate the relationship between climate change policies and economic growth in developing nations over the past decade"
+  - "Analyze the evolution of renewable energy technologies and their integration into national power grids"
+  - "Explore the intersection of neuroscience and artificial intelligence in understanding human cognition"
+
+# Detailed Capabilities
+capabilities_detail:
+  deep_research_analysis:
+    supported: true
+    description: "Comprehensive topic analysis with iterative search and validation"
+    features:
+      - "Query decomposition into sub-topics"
+      - "Multi-source information aggregation"
+      - "Fact validation and cross-referencing"
+      - "Domain insight connection"
+      - "Structured output generation"
+    limitations: "Requires reliable knowledge sources; may be slower for simple queries"
+
+  knowledge_synthesis:
+    supported: true
+    description: "Synthesizing information from multiple domains into coherent insights"
+    features:
+      - "Cross-domain knowledge integration"
+      - "Pattern recognition across sources"
+      - "Trend identification and analysis"
+      - "Expert insight extraction"
+    limitations: "Dependent on quality and diversity of input sources"
+
+  iterative_learning:
+    supported: true
+    description: "Progressively deepening understanding through multiple search passes"
+    features:
+      - "Multi-stage research process"
+      - "Gap identification and filling"
+      - "Reasoning chain documentation"
+      - "Confidence level assessment"
+    limitations: "Increased processing time for complex topics"
+
+# Requirements
+requirements:
+  packages:
+    - "agno>=2.2.0"
+    - "lancedb>=0.8.0"
+    - "tantivy>=0.22.0"
+    - "sqlalchemy>=2.0.45"
+    - "mem0ai>=1.0.1"
+    - "openai>=2.11.0"
+  system:
+    - "Python 3.12+"
+  min_memory_mb: 512
+  external_services:
+    - "OpenRouter API for LLM access"
+    - "Mem0 AI for memory operations"
+
+# Performance Metrics
+performance:
+  avg_processing_time_ms: 5000
+  max_concurrent_requests: 5
+  memory_per_request_mb: 512
+  timeout_seconds: 120
+  max_iterations_per_query: 10
+  scalability: horizontal
+
+# Tool Restrictions
+allowed_tools:
+  - KnowledgeBaseSearch
+  - MemoryOperations
+  - FactValidation
+  - SourceAnalysis
+  - ContentSynthesis
+  - Research
+
+# Rich Documentation
+documentation:
+  overview: |
+    The Deep Knowledge Agent specializes in thorough, well-researched analysis of complex topics.
+    Unlike surface-level assistants, it performs iterative searches, breaks down queries into
+    manageable components, validates information across multiple sources, and synthesizes
+    comprehensive answers with proper citations. It's designed for users who need in-depth
+    understanding rather than quick answers, making it ideal for research, technical analysis,
+    and knowledge exploration tasks.
+
+  use_cases:
+    when_to_use:
+      - "Complex research requiring multiple perspectives"
+      - "Technical topics needing thorough exploration"
+      - "Fact-checking and validation of claims"
+      - "Domain exploration and knowledge synthesis"
+      - "Academic or professional research support"
+      - "Decision-making requiring comprehensive analysis"
+
+    when_not_to_use:
+      - "Simple factual questions (use general assistant)"
+      - "Real-time information requests (use news/search agent)"
+      - "Mathematical calculations (use calculator agent)"
+      - "Code generation or debugging (use programming agent)"
+      - "Personal advice or opinion-based responses"
+
+  input_structure: |
+    Accepts research queries with optional parameters:
+
+    Text format:
+    "Research query with optional depth specification"
+
+    JSON format:
+    {
+      "query": "Research topic or question",
+      "depth": "quick|standard|deep|exhaustive",
+      "focus_areas": ["domain1", "domain2"],
+      "exclude_sources": ["domain_to_exclude"],
+      "max_iterations": 5,
+      "output_format": "structured|narrative|both"
+    }
+
+    Constraints:
+    - Max query length: 1000 characters
+    - Max iterations: 10
+    - Timeout: 120 seconds
+    - Language: English (primary), limited multilingual support
+
+  output_format: |
+    Standard Research Output:
+
+    {
+      "success": true,
+      "research": {
+        "title": "Generated research title",
+        "executive_summary": "Brief overview of findings...",
+        "key_findings": [
+          {
+            "finding": "Main finding 1",
+            "supporting_evidence": ["Source 1", "Source 2"],
+            "confidence": 0.95,
+            "relevance": "high"
+          }
+        ],
+        "analysis": "Detailed analysis and insights...",
+        "connections": "Cross-domain connections identified...",
+        "gaps_identified": "Areas requiring further research...",
+        "conclusions": "Synthesized conclusions..."
+      },
+      "methodology": {
+        "iterations_performed": 3,
+        "sources_consulted": 8,
+        "search_terms_used": ["term1", "term2", "term3"],
+        "validation_methods": ["cross-referencing", "source_credibility_check"]
+      },
+      "metadata": {
+        "processing_time_ms": 4500,
+        "confidence_score": 0.88,
+        "depth_level": "deep",
+        "timestamp": "2024-01-01T12:00:00Z"
+      }
+    }
+
+    Error Response:
+    {
+      "success": false,
+      "error": {
+        "code": "RESEARCH_ERROR",
+        "message": "Error description",
+        "suggestions": ["suggestion1", "suggestion2"]
+      }
+    }
+
+  error_handling:
+    - "No relevant sources found: Returns search strategy attempted and suggestions"
+    - "Conflicting information: Presents all perspectives with confidence scores"
+    - "Timeout: Returns partial results with completion percentage"
+    - "Complex query: Asks for clarification or suggests scoping"
+    - "Resource limits: Queues requests or suggests simplified queries"
+    - "Knowledge gaps: Clearly identifies limitations and suggests further research"
+
+  examples:
+    - title: "Quantum Computing Cryptography Analysis"
+      input:
+        query: "Research the impact of quantum computing on modern cryptography"
+        depth: "deep"
+        focus_areas: ["cryptography", "quantum_computing", "cybersecurity"]
+      output:
+        success: true
+        research:
+          title: "Quantum Computing's Threat to Modern Cryptographic Standards"
+          executive_summary: "Quantum computing poses significant threats to current encryption methods..."
+          key_findings: [...]
+        methodology:
+          iterations_performed: 4
+          sources_consulted: 12
+        metadata:
+          processing_time_ms: 7800
+          confidence_score: 0.92
+
+    - title: "AI Ethics in Healthcare"
+      input:
+        query: "Analyze ethical implications of AI in healthcare decision-making"
+        depth: "standard"
+      output:
+        success: true
+        research:
+          title: "Ethical Considerations in AI-Powered Healthcare Systems"
+          executive_summary: "AI in healthcare presents complex ethical challenges..."
+          key_findings: [...]
+        metadata:
+          processing_time_ms: 5200
+          confidence_score: 0.85
+
+  best_practices:
+    for_developers:
+      - "Use appropriate depth levels based on query complexity"
+      - "Implement caching for frequent or similar queries"
+      - "Monitor source credibility and diversity"
+      - "Provide clear progress indicators for long-running queries"
+      - "Validate input parameters and provide helpful error messages"
+
+    for_orchestrators:
+      - "Route complex, research-intensive queries to this skill"
+      - "Chain with summarization skills for executive briefings"
+      - "Consider query complexity when setting timeouts"
+      - "Use confidence scores for quality assurance"
+      - "Implement fallback to simpler research for time-sensitive queries"
+      - "Monitor resource usage for load balancing"
+
+  installation: |
+    Required packages:
+    pip install agno lancedb tantivy sqlalchemy mem0ai openai
+
+    Environment variables:
+    OPENROUTER_API_KEY=your_openrouter_api_key
+    MEM0_API_KEY=your_mem0_api_key
+
+    System requirements:
+    # Python 3.12 or higher
+    # Sufficient storage for knowledge base (minimum 1GB)
+
+  versioning:
+    - version: "1.0.0"
+      date: "2026-01-13"
+      changes: "Initial release with deep research, knowledge synthesis, and iterative learning capabilities"
+    - version: "1.1.0"
+      status: "planned"
+      changes: "Enhanced multilingual support and academic database integration"
+    - version: "1.2.0"
+      status: "planned"
+      changes: "Real-time source updates and collaborative research features"
+
+# Assessment fields for skill negotiation
+assessment:
+  keywords:
+    - "research"
+    - "investigate"
+    - "analyze"
+    - "deep"
+    - "knowledge"
+    - "synthesis"
+    - "comprehensive"
+    - "thorough"
+    - "explore"
+    - "study"
+    - "examine"
+    - "technical"
+    - "academic"
+    - "professional"
+
+  specializations:
+    - domain: "technical_research"
+      confidence_boost: 0.4
+    - domain: "academic_analysis"
+      confidence_boost: 0.3
+    - domain: "domain_exploration"
+      confidence_boost: 0.3
+
+  anti_patterns:
+    - "simple question"
+    - "quick answer"
+    - "real-time"
+    - "live update"
+    - "calculation"
+    - "code"
+    - "opinion"
+    - "personal"
+
+  complexity_indicators:
+    simple:
+      - "fact"
+      - "definition"
+      - "quick answer"
+      - "simple explanation"
+    medium:
+      - "explain"
+      - "describe"
+      - "overview"
+      - "summary"
+    complex:
+      - "research"
+      - "analyze"
+      - "investigate"
+      - "deep dive"
+      - "comprehensive"
+      - "thorough"
+      - "technical analysis"
+      - "domain exploration"

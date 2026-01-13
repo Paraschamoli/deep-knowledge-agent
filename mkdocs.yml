@@ -1,0 +1,52 @@
+site_name: deep-knowledge-agent
+repo_url: https://github.com/Paraschamoli/deep-knowledge-agent
+site_url: https://Paraschamoli.github.io/deep-knowledge-agent
+site_description: Deep Knowledge Agent is an AI-powered research assistant designed to perform in-depth analysis on complex topics by aggregating information from multiple reliable sources. It breaks down queries into sub-topics, validates facts, connects insights across domains, and delivers structured, well-reasoned outputs—making it ideal for deep research, technical exploration, and knowledge synthesis rather than surface-level answers.
+site_author: Paras Chamoli
+edit_uri: edit/main/docs/
+repo_name: Paraschamoli/deep-knowledge-agent
+copyright: Maintained by <a href="https://Paraschamoli.com">Paraschamoli</a>.
+
+nav:
+  - Home: index.md
+  - Modules: modules.md
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: ["src/deep_knowledge_agent"]
+theme:
+  name: material
+  feature:
+    tabs: true
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      accent: deep orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  icon:
+    repo: fontawesome/brands/github
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Paraschamoli/deep-knowledge-agent
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/deep-knowledge-agent
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
